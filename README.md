@@ -14,19 +14,7 @@ The agent receives a hardware spec, writes Verilog, lints and simulates it with 
 
 ## Architecture
 
-```
-                        +-----------------------+
- spec.txt -------------->|   Agent (orchestrator) |
-                        +-----------------------+
-                          |            |
-               writes     |            | tool calls
-                          v            v
-                       RTL (.sv)   Verilator
-                          |          (lint + sim)
-                          +---->  errors/output
-                                    | feedback
-                                    +------> iterate
-```
+![Architecture](docs/diagrams/architecture.svg)
 
 ## Components
 
@@ -65,6 +53,12 @@ make demo            # run agent on the FIFO spec
 | Module | Iterations to pass | Lint errors fixed | Sim time |
 |---|---|---|---|
 | FIFO | — | — | — |
+
+## Test run
+
+Output of the CI command (`make lint sim`), captured from a local run:
+
+![Test run](docs/screenshots/test_run.svg)
 
 ## Setup
 
